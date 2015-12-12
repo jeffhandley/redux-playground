@@ -4,8 +4,22 @@
   "description": "Redux playground",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf lib",
+    "prebuild": "npm run clean",
+    "build": "babel src --out-dir lib",
+    "prestart": "npm run build",
+    "start": "babel-node src/index",
+    "serve": "node lib/index"
   },
-  "author": "Jeff Handley",
-  "license": "ISC"
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.3.13"
+  }
 }
