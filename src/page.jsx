@@ -1,19 +1,21 @@
 import React from 'react';
 import count from './count';
 
-let Page = React.createClass({
+export default React.createClass({
     render() {
         return (
             <html>
+                <head>
+                    <title>{this.props.title}</title>
+                </head>
                 <body>
+                    <button onclick={this.props.onIncrement}>+</button>
                     We counted to {this.props.counter}.
+                    <div className='content'>
+                        {this.props.children}
+                    </div>
                 </body>
             </html>
         );
     }
 });
-
-export default function(countTo = 0) {
-    let value = count(countTo);
-    return <Page counter={value} />;
-}

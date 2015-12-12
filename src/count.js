@@ -14,7 +14,7 @@ export default function count(to) {
 
     let store = createStore(counter);
 
-    for (let i = 0; i < to; i++) {
+    for (let i = 0; i < to; i += 2) {
         store.dispatch( { type: 'INCREMENT' });
     }
 

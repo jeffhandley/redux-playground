@@ -1,16 +1,19 @@
 import express from 'express';
-import count from './count';
+import App from './App';
 import url from 'url';
-import page from './page';
 import ReactDOMServer from 'react-dom/server';
 
 let app = express();
 
 app.get('/', (req, res) => {
-    let countTo = url.parse(req.url).query;
-    let component = page(countTo);
+    let state = {
+        counter: url.parse(req.url).query,
+        title: 'Redux Shell'
+    };
 
-    res.send(ReactDOMServer.renderToString(component));
+    let app = App(state);
+    let html = ReactDOMServer.renderToString(app);
+    res.send(html);
 });
 
 let server = app.listen(3000, () => {
