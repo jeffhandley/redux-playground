@@ -8,17 +8,21 @@
     "clean": "rm -rf lib",
     "prebuild": "npm run clean",
     "build": "babel src --out-dir lib",
-    "start": "nodemon --watch src --exec babel-node src/index",
+    "start": "nodemon --watch src -e js,jsx --exec babel-node src/index",
     "serve": "node lib/index"
   },
   "engines": {
     "node": ">=4.0.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.3.14",
     "express": "^4.13.3",
+    "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "redux": "^3.0.4"
+    "react-redux": "^4.0.2",
+    "redux": "^3.0.4",
+    "redux-thunk": "^1.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.3.17",

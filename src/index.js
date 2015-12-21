@@ -1,18 +1,14 @@
 import express from 'express';
-import App from './App';
-import url from 'url';
+import * as Shell from './Shell';
+import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 let app = express();
 
 app.get('/', (req, res) => {
-    let state = {
-        counter: url.parse(req.url).query,
-        title: 'Redux Shell'
-    };
+    Shell.requireJs('foo.js');
 
-    let app = App(state);
-    let html = ReactDOMServer.renderToString(app);
+    let html = ReactDOMServer.renderToString(<Shell.Root />);
     res.send(html);
 });
 
