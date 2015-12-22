@@ -17,6 +17,8 @@
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "express": "^4.13.3",
+    "fluxible": "^1.0.3",
+    "fluxible-addons-react": "^0.2.2",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",

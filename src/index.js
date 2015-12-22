@@ -6,10 +6,18 @@ import ReactDOMServer from 'react-dom/server';
 let app = express();
 
 app.get('/', (req, res) => {
-    Shell.requireJs('foo.js');
+    Shell.layout.requireJs('Common.js');
 
-    let html = ReactDOMServer.renderToString(<Shell.Root />);
-    res.send(html);
+    let page = require('./pages/Mars');
+
+    page.provideLayout(Shell.layout);
+
+    page.load(req, (pageComponent, state) => {
+        let innerHtml = ReactDOMServer.renderToString(pageComponent);
+        let html = ReactDOMServer.renderToString(<Shell.Application {...{innerHtml}} />);
+        res.send(html);
+    });
+
 });
 
 let server = app.listen(3000, () => {
