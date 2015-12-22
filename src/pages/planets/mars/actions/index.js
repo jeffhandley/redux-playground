@@ -1,4 +1,4 @@
-import { LOAD_MOONS } from '../constants';
+import { LOAD_MOONS } from '../../constants';
 
 export function load(actionContext, payload, done) {
     actionContext.dispatch(LOAD_MOONS, [

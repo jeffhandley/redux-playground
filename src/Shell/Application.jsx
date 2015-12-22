@@ -7,8 +7,7 @@ const Root = React.createClass({
 
     propTypes: {
         layout: LayoutPropTypes.state,
-        pageHtml: React.PropTypes.string.isRequired,
-        pageState: React.PropTypes.object
+        pageHtml: React.PropTypes.string.isRequired
     },
 
     render() {

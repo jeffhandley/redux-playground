@@ -2,7 +2,7 @@ import { createStore } from 'fluxible/addons';
 import * as constants from './constants';
 
 export default createStore({
-    storeName: 'Mars',
+    storeName: 'Planet',
 
     getMoons() {
         return this.moons || [ ];

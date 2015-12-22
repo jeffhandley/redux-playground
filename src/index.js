@@ -9,14 +9,12 @@ app.use(middleware);
 app.get('*', (req, res) => {
     let { loadPage } = require('./pages' + req.pathname);
 
-    loadPage(req, (page, pageState) => {
+    loadPage(req, (page) => {
         let pageHtml = ReactDOMServer.renderToString(page);
+        let { Application } = req.shell;
 
         let html = ReactDOMServer.renderToString(
-            React.createElement(req.shell.Application, {
-                pageHtml,
-                pageState
-            })
+            <Application {...{pageHtml}} />
         );
 
         res.send(html);

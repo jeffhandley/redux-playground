@@ -6,21 +6,21 @@ import configureStore from './configureStore';
 import layoutActionCreators from './layout/actionCreators';
 
 import layoutPropTypes from './layout/PropTypes';
-import Root from './Root';
+import Application from './Application';
 
 export default function createShell(req) {
     const store = configureStore();
 
     const layout = bindActionCreators(layoutActionCreators, store.dispatch);
 
-    const Application = (props) => (
+    const application = (props) => (
         <Provider store={store}>
-            <Root {...props} />
+            <Application {...props} />
         </Provider>
     );
 
     return {
-        Application,
+        Application: application,
         layout,
         layoutActionPropTypes: layoutPropTypes.actions
     };
