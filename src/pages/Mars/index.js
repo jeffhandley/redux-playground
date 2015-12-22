@@ -1,11 +1,13 @@
 import React from 'react';
+import createPage from './createPage';
 import * as actions from './actions';
 
 function noInit(actionContext, payload, done) {
     done();
 }
 
-export default function loadPage(page, req, callback) {
+export function loadPage(req, callback) {
+    const page = createPage(req.shell);
     const context = page.createContext();
 
     context.executeAction(actions.init || noInit, req, () => {
