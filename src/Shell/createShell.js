@@ -11,7 +11,10 @@ import Application from './Application';
 export default function createShell(req) {
     const store = configureStore();
 
-    const layout = bindActionCreators(layoutActionCreators, store.dispatch);
+    const layout = bindActionCreators(
+        layoutActionCreators,
+        store.dispatch
+    );
 
     const application = (props) => (
         <Provider store={store}>

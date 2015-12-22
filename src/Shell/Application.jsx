@@ -11,7 +11,10 @@ const Root = React.createClass({
     },
 
     render() {
-        const { layout } = this.props;
+        const { layout, state } = this.props;
+        const shellState = `
+            window.SHELL_STATE = ${JSON.stringify(state)};
+        `;
 
         return (
             <html>
@@ -34,13 +37,15 @@ const Root = React.createClass({
                         { this.props.pageHtml && (<div dangerouslySetInnerHTML={{__html: this.props.pageHtml}} />) }
                     </div>
                 </body>
+                <script dangerouslySetInnerHTML={{__html: shellState}} />
             </html>
         );
     }
 });
 
 const mapStateToProps = (state) => ({
-    layout: state.layout
+    layout: state.layout,
+    state: state
 });
 
 export default connect(mapStateToProps)(Root);
