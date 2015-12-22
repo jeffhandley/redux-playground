@@ -5,14 +5,19 @@ export default React.createClass({
 
     contextTypes: {
         layout: React.PropTypes.shape({
-            requireJs: React.PropTypes.func.isRequired
+            requireJs: React.PropTypes.func.isRequired,
+            setPageTitle: React.PropTypes.func.isRequired
         }).isRequired
     },
 
-    render() {
+    componentWillMount() {
         this.context.layout.requireJs('Mars-Client.js');
-        this.context.layout.setTitle('Mars');
+        this.context.layout.setPageTitle('Mars');
+        this.context.layout.setLeftMenu('Mars-Admin');
+        this.context.layout.selectTopMenu('Planets');
+    },
 
+    render() {
         return (
             <div>
                 We're on Mars!

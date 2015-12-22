@@ -1,33 +1,45 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
+import LayoutPropTypes from './layout/PropTypes';
 
-export default React.createClass({
+const Root = React.createClass({
     displayName: 'Root',
 
+    propTypes: {
+        layout: LayoutPropTypes.state
+    },
+
     render() {
-        const state = this.props.store.getState();
-        console.log('state', state);
+        const { layout } = this.props;
 
         return (
-            <Provider store={this.props.store}>
-                <html>
-                    <head>
-                        <title>{state.pageTitle}</title>
-                    </head>
-                    <body>
-                        { state.requireJs && !!state.requireJs.length && (
-                            <div>
-                                Required JS Files:
-                                <ol>
-                                    { state.requireJs.map((file) => (<li key={file}>{file}</li>)) }
-                                </ol>
-                            </div>
-                        ) }
-                        <div>TOP NAV</div>
+            <html>
+                <head>
+                    <title>{layout.pageTitle}</title>
+                </head>
+                <body>
+                    { layout.requiredJs && !!layout.requiredJs.length && (
+                        <div>
+                            Required JS Files:
+                            <ol>
+                                { layout.requiredJs.map((file) => (<li key={file}>{file}</li>)) }
+                            </ol>
+                        </div>
+                    ) }
+                    <div>Selected Top Menu: { layout.selectedTopMenu }</div>
+                    <div>Left Menu: { layout.leftMenu }</div>
+                    <div>
+                        <h1>{layout.pageTitle}</h1>
                         { this.props.innerHtml && (<div dangerouslySetInnerHTML={{__html: this.props.innerHtml}} />) }
-                    </body>
-                </html>
-            </Provider>
+                    </div>
+                </body>
+            </html>
         );
     }
 });
+
+const mapStateToProps = (state) => ({
+    layout: state.layout
+});
+
+export default connect(mapStateToProps)(Root);

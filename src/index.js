@@ -1,20 +1,21 @@
 import express from 'express';
-import * as Shell from './Shell';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import createShell from './Shell/createShell';
 
 let app = express();
 
 app.get('/', (req, res) => {
-    Shell.layout.requireJs('Common.js');
+    let shell = createShell(req);
+    shell.layout.requireJs('Common.js');
 
-    let page = require('./pages/Mars');
+    let { default: createPage } = require('./pages/Mars/createPage');
+    let { default: loadPage } = require('./pages/Mars/loadPage');
 
-    page.provideLayout(Shell.layout);
-
-    page.load(req, (pageComponent, state) => {
+    let page = createPage(req, shell);
+    loadPage(page, req, (pageComponent, pageState) => {
         let innerHtml = ReactDOMServer.renderToString(pageComponent);
-        let html = ReactDOMServer.renderToString(<Shell.Application {...{innerHtml}} />);
+        let html = ReactDOMServer.renderToString(<shell.Application {...{innerHtml}} />);
         res.send(html);
     });
 

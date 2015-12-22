@@ -1,6 +1,4 @@
 import { combineReducers } from 'redux';
-import addTopMenuItem from './addTopMenuItem';
-import requireJs from './requireJs';
-import pageTitle from './pageTitle';
+import layout from '../layout/reducers';
 
-export default combineReducers({ addTopMenuItem, requireJs, pageTitle });
+export default combineReducers({ layout });
