@@ -36,8 +36,8 @@ const Root = React.createClass({
                         <h1>{layout.pageTitle}</h1>
                         { this.props.pageHtml && (<div dangerouslySetInnerHTML={{__html: this.props.pageHtml}} />) }
                     </div>
+                    <script dangerouslySetInnerHTML={{__html: shellState}} />
                 </body>
-                <script dangerouslySetInnerHTML={{__html: shellState}} />
             </html>
         );
     }

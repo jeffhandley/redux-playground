@@ -1,11 +1,11 @@
-import Page from './components/Page';
+import Mars from './components/Mars';
 import loadFluxiblePage from '../../loadFluxiblePage';
 import store from '../planetStore';
 import * as actions from './actions';
 
 export function loadPage(req, callback) {
     return loadFluxiblePage(
-        Page,
+        Mars,
         req,
         actions,
         [ store ],

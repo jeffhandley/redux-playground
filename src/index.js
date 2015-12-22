@@ -6,7 +6,7 @@ import ReactDOMServer from 'react-dom/server';
 let app = express();
 app.use(middleware);
 
-app.get('*', (req, res) => {
+app.get('/planets/*', (req, res) => {
     let { loadPage } = require('./pages' + req.pathname);
 
     loadPage(req, (page) => {

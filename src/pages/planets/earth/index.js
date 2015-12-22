@@ -1,11 +1,11 @@
-import Page from './components/Page';
+import Earth from './components/Earth';
 import loadFluxiblePage from '../../loadFluxiblePage';
 import store from '../planetStore';
 import * as actions from './actions';
 
 export function loadPage(req, callback) {
     return loadFluxiblePage(
-        Page,
+        Earth,
         req,
         actions,
         [ store ],
