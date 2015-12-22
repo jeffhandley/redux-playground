@@ -1,20 +1,13 @@
 import express from 'express';
+import middleware from './express-middleware';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import shell from './Shell/express-middleware';
 
 let app = express();
-app.use(shell);
+app.use(middleware);
 
-function requireCommonJs({ shell }, res, next) {
-    shell.layout.requireJs('Common.js');
-    next();
-}
-
-app.use(requireCommonJs);
-
-app.get('/', (req, res) => {
-    let { loadPage } = require('./pages/Mars');
+app.get('*', (req, res) => {
+    let { loadPage } = require('./pages' + req.pathname);
 
     loadPage(req, (page, pageState) => {
         let pageHtml = ReactDOMServer.renderToString(page);

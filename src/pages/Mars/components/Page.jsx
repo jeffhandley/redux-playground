@@ -18,9 +18,19 @@ export default React.createClass({
     },
 
     render() {
+        let { moons } = this.props;
+
         return (
             <div>
                 We're on Mars!
+
+                { moons && moons.length && (
+                    <ul>
+                        { moons.map((moon) => (
+                            <li key={moon}>{moon}</li>
+                        )) }
+                    </ul>
+                ) }
             </div>
         );
     }

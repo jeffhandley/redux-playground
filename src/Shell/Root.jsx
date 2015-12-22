@@ -6,7 +6,9 @@ const Root = React.createClass({
     displayName: 'Root',
 
     propTypes: {
-        layout: LayoutPropTypes.state
+        layout: LayoutPropTypes.state,
+        pageHtml: React.PropTypes.string.isRequired,
+        pageState: React.PropTypes.object
     },
 
     render() {
@@ -30,7 +32,7 @@ const Root = React.createClass({
                     <div>Left Menu: { layout.leftMenu }</div>
                     <div>
                         <h1>{layout.pageTitle}</h1>
-                        { this.props.innerHtml && (<div dangerouslySetInnerHTML={{__html: this.props.innerHtml}} />) }
+                        { this.props.pageHtml && (<div dangerouslySetInnerHTML={{__html: this.props.pageHtml}} />) }
                     </div>
                 </body>
             </html>

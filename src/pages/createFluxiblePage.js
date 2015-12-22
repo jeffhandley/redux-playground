@@ -1,8 +1,7 @@
 import Fluxible from 'fluxible';
 import provideContext from 'fluxible-addons-react/provideContext';
-import Page from './components/Page';
 
-export default function createPage(shell) {
+export default function createFluxiblePage(Page, shell) {
     const component = provideContext(Page, {
         layout: shell.layoutActionPropTypes
     });
