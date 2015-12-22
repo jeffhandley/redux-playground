@@ -12,7 +12,7 @@ export default React.createClass({
     componentWillMount() {
         const { layout } = this.context;
 
-        layout.requireJs('Earth-Client.js');
+        layout.requireJs('/static/pages/planets/earth/client.js');
         layout.setPageTitle('Earth');
         layout.setLeftMenu('Earth-Admin');
         layout.selectTopMenu('Planets');

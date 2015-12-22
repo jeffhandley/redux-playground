@@ -11,7 +11,7 @@ const Root = React.createClass({
     },
 
     render() {
-        const { layout, state } = this.props;
+        const { layout, state, shellClientPath } = this.props;
         const shellState = `
             window.SHELL_STATE = ${JSON.stringify(state)};
         `;
@@ -20,6 +20,9 @@ const Root = React.createClass({
             <html>
                 <head>
                     <title>{layout.pageTitle}</title>
+                    { layout.requiredJs && layout.requiredJs.map((js) => (
+                        <script src={js} />
+                    )) }
                 </head>
                 <body>
                     { layout.requiredJs && !!layout.requiredJs.length && (
@@ -37,6 +40,7 @@ const Root = React.createClass({
                         { this.props.pageHtml && (<div dangerouslySetInnerHTML={{__html: this.props.pageHtml}} />) }
                     </div>
                     <script dangerouslySetInnerHTML={{__html: shellState}} />
+                    <script src={shellClientPath} />
                 </body>
             </html>
         );

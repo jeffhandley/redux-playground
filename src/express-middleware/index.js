@@ -7,6 +7,6 @@ import commonjs from './commonjs';
 export default [
     pathname,
     logRequest,
-    shell,
-    commonjs
+    shell('/nui/shell'),
+    commonjs,
 ];
