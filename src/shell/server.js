@@ -21,7 +21,8 @@ export default function server(store) {
                 leftMenu: ReactDOMServer.renderToString(<LeftMenu {...{layout}} />),
                 pageHeading: ReactDOMServer.renderToString(<PageHeading>{layout.pageTitle}</PageHeading>),
                 footer: ReactDOMServer.renderToString(<Footer {...{layout}} />),
-                layout
+                layout,
+                body
             };
 
             return ReactDOMServer.renderToStaticMarkup(

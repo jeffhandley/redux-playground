@@ -17,4 +17,7 @@ app.get('/planets/*', (req, res) => {
 
 let server = app.listen(3000, () => {
     console.log('Listening on port 3000');
+    console.log('Pages available:');
+    console.log('http://localhost:3000/planets/earth');
+    console.log('http://localhost:3000/planets/mars');
 });
