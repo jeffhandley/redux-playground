@@ -3,7 +3,7 @@ import uniqueArray from './uniqueArray';
 import property from './property';
 
 export default {
-    setLeftMenu: property(actions.SET_LEFT_MENU),
+    setLeftMenu: property(actions.SET_LEFT_MENU, [ ]),
     setPageTitle: property(actions.SET_PAGE_TITLE),
     requireCss: uniqueArray(actions.REQUIRE_CSS).add,
     requireJs: uniqueArray(actions.REQUIRE_JS).add,

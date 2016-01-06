@@ -6,9 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf lib",
+    "predev": "npm run build:shell",
+    "dev": "babel-node src/index",
     "prebuild": "npm run clean",
     "build": "babel src --out-dir lib",
-    "start": "nodemon --watch src -e js,jsx --exec babel-node src/index",
+    "build:shell": "(cd src/Shell && webpack)",
+    "start": "nodemon --watch src -e js,jsx --ignore '**/dist/*.js' --exec npm run dev",
     "serve": "node lib/index"
   },
   "engines": {

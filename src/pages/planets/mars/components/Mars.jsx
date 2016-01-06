@@ -12,10 +12,15 @@ export default React.createClass({
     componentWillMount() {
         const { layout } = this.context;
 
-        layout.requireJs('/static/pages/planets/mars/client.js');
+        // layout.requireJs('/static/pages/planets/mars/client.js');
         layout.setPageTitle('Mars');
-        layout.setLeftMenu('Mars-Admin');
-        layout.selectTopMenu('Planets');
+
+        layout.setLeftMenu([
+            { href: './mars', title: 'Mars Home', text: 'Home' },
+            { href: '#', title: 'Mars Admin', text: 'Admin' }
+        ]);
+
+        layout.selectTopMenu('Mars');
     },
 
     render() {

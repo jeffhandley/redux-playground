@@ -1,23 +1,16 @@
 import express from 'express';
-import middleware from './express-middleware';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import shellMiddleware from './shell/express-middleware';
+import commonMiddleware from './express-middleware';
 
 let app = express();
-app.use(middleware);
+app.use(shellMiddleware('/shell'));
+app.use(commonMiddleware);
 
 app.get('/planets/*', (req, res) => {
     let { loadPage } = require('./pages' + req.pathname);
 
     loadPage(req, (page) => {
-        let pageHtml = ReactDOMServer.renderToString(page);
-        let { Application } = req.shell;
-
-        let html = ReactDOMServer.renderToString(
-            <Application {...{pageHtml}} />
-        );
-
-        res.send(html);
+        res.send(req.shell.renderPage(page));
     });
 
 });

@@ -1,30 +1,25 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { Provider } from 'react-redux';
 
 import configureStore from './configureStore';
 import layoutActionCreators from './layout/actionCreators';
 
 import layoutPropTypes from './layout/PropTypes';
-import Application from './Application';
+import server from './server';
 
 export default function createShell(req) {
     const store = configureStore();
+
+    const serverInstance = server(store);
 
     const layout = bindActionCreators(
         layoutActionCreators,
         store.dispatch
     );
 
-    const application = (props) => (
-        <Provider store={store}>
-            <Application {...props} />
-        </Provider>
-    );
-
     return {
-        Application: application,
         layout,
-        layoutActionPropTypes: layoutPropTypes.actions
+        layoutActionPropTypes: layoutPropTypes.actions,
+        renderPage: serverInstance.renderPage
     };
 }

@@ -11,7 +11,11 @@ export default {
         useBootstrapFullyResponsive: React.PropTypes.func.isRequired
     }).isRequired,
     state: React.PropTypes.shape({
-        leftMenu: React.PropTypes.string,
+        leftMenu: React.PropTypes.arrayOf(React.PropTypes.shape({
+            href: React.PropTypes.string.isRequired,
+            title: React.PropTypes.string,
+            text: React.PropTypes.string.isRequired
+        })),
         pageTitle: React.PropTypes.string,
         requiredCss: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
         requiredJs: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
