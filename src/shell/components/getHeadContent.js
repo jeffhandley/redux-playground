@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 export default (props) => {
-    const { state } = props;
-    const { layout } = state;
+    const { layout } = props;
 
     const shellState = `
-        window.SHELL_STATE = ${JSON.stringify(state)};
+        window.SHELL_STATE = ${JSON.stringify(props)};
     `;
 
     const children = [

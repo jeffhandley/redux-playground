@@ -1,6 +1,6 @@
 export const leftMenu = [
     { href: './mars', title: 'Mars Home', text: 'Mars Home' },
-    { href: '#', title: 'Mars Admin', text: 'Mars Admin' }
+    { href: '#admin', title: 'Mars Admin', text: 'Mars Admin' }
 ];
 
 export default (layout) => {

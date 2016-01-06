@@ -10,7 +10,7 @@ export default (props) => {
                     float: left;
                     background-color: silver;
                     width: 100px;
-                    height: 90%;
+                    height: 80%;
                     margin-right: 30px;
                     margin-top: 0;
                     margin-bottom: 0;
