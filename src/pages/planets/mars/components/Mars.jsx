@@ -2,6 +2,7 @@ import React from 'react';
 import LayoutPropTypes from '../../../../Shell/layout/PropTypes';
 import Moons from '../../Moons';
 import setLayout from '../setLayout';
+import NoLeftMenu from '../../../../shell/templates/NoLeftMenu';
 
 export default React.createClass({
     displayName: 'Mars',
@@ -13,6 +14,7 @@ export default React.createClass({
     componentWillMount() {
         const { layout } = this.context;
         setLayout(layout);
+        layout.setTemplate(NoLeftMenu);
     },
 
     render() {
@@ -22,6 +24,7 @@ export default React.createClass({
             <div>
                 We're on Mars!
                 <Moons {...{moons}} />
+                And there's no left menu for Mars
             </div>
         );
     }

@@ -9,6 +9,7 @@ export default combineReducers({
     requiredCss: uniqueArray(actions.REQUIRE_CSS),
     requiredJs: uniqueArray(actions.REQUIRE_JS),
     selectedTopMenu: property(actions.SELECT_TOP_MENU),
+    template: property(actions.SET_TEMPLATE),
     useBootstrapLayout: property(actions.USE_BOOTSTRAP_LAYOUT, false),
     useBootstrapFullyResponsive: property(actions.USE_BOOTSTRAP_FULLY_RESPONSIVE, false)
 });

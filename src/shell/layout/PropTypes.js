@@ -7,6 +7,7 @@ export default {
         requireCss: React.PropTypes.func.isRequired,
         requireJs: React.PropTypes.func.isRequired,
         selectTopMenu: React.PropTypes.func.isRequired,
+        setTemplate: React.PropTypes.func.isRequired,
         useBootstrapLayout: React.PropTypes.func.isRequired,
         useBootstrapFullyResponsive: React.PropTypes.func.isRequired
     }).isRequired,
@@ -20,6 +21,7 @@ export default {
         requiredCss: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
         requiredJs: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
         selectedTopMenu: React.PropTypes.string,
+        template: React.PropTypes.func,
         useBootstrapLayout: React.PropTypes.bool.isRequired,
         useBootstrapFullyResponsive: React.PropTypes.bool.isRequired
     }).isRequired
