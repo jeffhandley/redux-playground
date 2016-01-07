@@ -5,14 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf lib",
+    "build:shell": "(cd src/Shell && webpack)",
     "predev": "npm run build:shell",
     "dev": "babel-node src/index",
-    "prebuild": "npm run clean",
-    "build": "babel src --out-dir lib",
-    "build:shell": "(cd src/Shell && webpack)",
-    "start": "nodemon --watch src -e js,jsx --ignore '**/dist/*.js' --exec npm run dev",
-    "serve": "node lib/index"
+    "dev:watch": "nodemon --watch src -e js,jsx --ignore '**/dist/*.js' --exec npm run dev"
   },
   "engines": {
     "node": ">=4.0.0"
