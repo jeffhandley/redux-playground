@@ -8,7 +8,7 @@
     "build:shell": "(cd src/Shell && webpack)",
     "predev": "npm run build:shell",
     "dev": "babel-node src/index",
-    "dev:watch": "nodemon --watch src -e js,jsx --ignore '**/dist/*.js' --exec npm run dev"
+    "start": "nodemon --watch src -e js,jsx --ignore '**/dist/*.js' --exec npm run dev"
   },
   "engines": {
     "node": ">=4.0.0"
